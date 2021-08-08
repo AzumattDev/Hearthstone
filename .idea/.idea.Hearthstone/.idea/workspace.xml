@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hearthstone.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hearthstone.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hearthstone.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hearthstone.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ILRepack.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/ServerSync.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LocalizationDecs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patches/PlayerPatches.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patches/ZNetPatches.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hearthstone" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages.config" afterDir="false" />
-    </list>
+    <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +9,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/crypt/RiderProjects/Hearthstone/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1wRFHlZR17r0gdJtahGnLEFoGhn" />
   <component name="ProjectViewState">
@@ -64,8 +47,16 @@
       <updated>1628413411843</updated>
       <workItem from="1628413421139" duration="19000" />
       <workItem from="1628413487970" duration="756000" />
-      <workItem from="1628414273919" duration="100000" />
+      <workItem from="1628414273919" duration="241000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit, Detalhes permission no Jötunn">
+      <created>1628414452919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628414452919</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,5 +79,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Initial commit, Detalhes permission no Jötunn" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit, Detalhes permission no Jötunn" />
   </component>
 </project>
