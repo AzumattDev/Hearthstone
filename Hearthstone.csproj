@@ -53,39 +53,70 @@
         </When>
     </Choose>
     <ItemGroup>
-        <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="0Harmony">
             <HintPath>$(GamePath)\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
-        <Reference Include="assembly_guiutils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="assembly_guiutils">
             <HintPath>$(GamePath)\valheim_Data\Managed\publicized_assemblies\assembly_guiutils_publicized.dll</HintPath>
         </Reference>
-        <Reference Include="assembly_steamworks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="assembly_steamworks">
             <HintPath>$(GamePath)\valheim_Data\Managed\publicized_assemblies\assembly_steamworks_publicized.dll</HintPath>
         </Reference>
-        <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="assembly_utils">
             <HintPath>$(GamePath)\valheim_Data\Managed\publicized_assemblies\assembly_utils_publicized.dll</HintPath>
         </Reference>
-        <Reference Include="assembly_valheim, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="assembly_valheim">
             <HintPath>$(GamePath)\valheim_Data\Managed\publicized_assemblies\assembly_valheim_publicized.dll</HintPath>
         </Reference>
-        <Reference Include="BepInEx, Version=5.4.11.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="BepInEx">
             <HintPath>$(GamePath)\BepInEx\core\BepInEx.dll</HintPath>
         </Reference>
-        <Reference Include="ServerSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="Mono.Cecil">
+          <HintPath>packages\JetBrains.Mono.Cecil.0.9.6.1\lib\net40\Mono.Cecil.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Mono.Cecil.Mdb">
+          <HintPath>packages\JetBrains.Mono.Cecil.0.9.6.1\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Mono.Cecil.Pdb">
+          <HintPath>packages\JetBrains.Mono.Cecil.0.9.6.1\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Mono.Cecil.Rocks">
+          <HintPath>packages\JetBrains.Mono.Cecil.0.9.6.1\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="MonoMod">
+          <HintPath>packages\MonoMod.21.8.5.1\lib\net40\MonoMod.exe</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="MonoMod.Common">
+          <HintPath>packages\MonoMod.Common.21.8.5.1\lib\net40\MonoMod.Common.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="MonoMod.Utils">
+          <HintPath>packages\MonoMod.Utils.21.8.5.1\lib\net40\MonoMod.Utils.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="ServerSync">
             <HintPath>Libs\ServerSync.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="UnityEngine">
             <HintPath>$(GamePath)\unstripped_corlib\UnityEngine.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(GamePath)\unstripped_corlib\UnityEngine.AssetBundleModule.dll</HintPath>
+        <Reference Include="UnityEngine.AssetBundleModule">
+            <HintPath>$(GamePath)\valheim_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(GamePath)\unstripped_corlib\UnityEngine.CoreModule.dll</HintPath>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(GamePath)\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+          <HintPath>$(GamePath)\valheim_Data\Managed\UnityEngine.UI.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
@@ -99,7 +130,9 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="Libs\ServerSync.dll" />
+        <Content Include="Libs\ServerSync.dll">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
         <Content Include="LICENSE" />
         <Content Include="README.md" />
         <EmbeddedResource Include="hearthstone" />

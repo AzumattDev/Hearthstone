@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="" />
+    <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hearthstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hearthstone.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hearthstone.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/ServerSync.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/ServerSync.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patches/PlayerPatches.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Patches/PlayerPatches.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patches/ZNetPatches.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Patches/ZNetPatches.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/packages.config" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,21 +22,46 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/crypt/RiderProjects/Hearthstone/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AzumattDev"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AzumattDev/Hearthstone.git",
+    "accountId": "cdee62cd-25b8-4e3d-8e58-bafe16cb00b2"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="1wRFHlZR17r0gdJtahGnLEFoGhn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\crypt\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\crypt\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\crypt\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
@@ -48,6 +85,9 @@
       <workItem from="1628413421139" duration="19000" />
       <workItem from="1628413487970" duration="756000" />
       <workItem from="1628414273919" duration="241000" />
+      <workItem from="1628414748728" duration="126000" />
+      <workItem from="1628489399366" duration="1592000" />
+      <workItem from="1716880671829" duration="306000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, Detalhes permission no Jötunn">
       <created>1628414452919</created>
@@ -56,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628414452919</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="workspace update">
+      <created>1628414781384</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628414781384</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -64,6 +111,9 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -75,11 +125,11 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit, Detalhes permission no Jötunn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit, Detalhes permission no Jötunn" />
+    <MESSAGE value="workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace update" />
   </component>
 </project>

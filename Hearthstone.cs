@@ -72,10 +72,10 @@ namespace Hearthstone
             }
 
             harmony.PatchAll();
-            MethodInfo methodInfo = AccessTools.Method(typeof(ZNet), "RPC_CharacterID",
+            MethodInfo methodInfo = AccessTools.Method(typeof(ZNet), nameof(ZNet.RPC_CharacterID),
                 new[] { typeof(ZRpc), typeof(ZDOID) });
             harmony.Patch(methodInfo, null,
-                new HarmonyMethod(AccessTools.Method(typeof(HearthstoneAdminGET), "RPC_CharID",
+                new HarmonyMethod(AccessTools.Method(typeof(HearthstoneAdminGET), nameof(HearthstoneAdminGET.RPC_CharID),
                     new[] { typeof(ZNet), typeof(ZRpc) })));
             LocalizationDecs.Localize();
 
@@ -200,7 +200,7 @@ namespace Hearthstone
         }
 
 
-        [HarmonyPatch(typeof(ZNetScene), "Awake")]
+        [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
         public static class HearthZNetScene_Awake_Patch
         {
             public static bool Prefix(ZNetScene __instance)
@@ -210,7 +210,7 @@ namespace Hearthstone
             }
         }
 
-        [HarmonyPatch(typeof(ObjectDB), "Awake")]
+        [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.Awake))]
         public static class HearthObjectDB_Awake_Patch
         {
             public static void Postfix()
@@ -220,7 +220,7 @@ namespace Hearthstone
             }
         }
 
-        [HarmonyPatch(typeof(ObjectDB), "CopyOtherDB")]
+        [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.CopyOtherDB))]
         public static class HearthObjectDB_CopyOtherDB_Patch
         {
             public static void Postfix()

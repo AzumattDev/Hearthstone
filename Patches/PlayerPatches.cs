@@ -20,7 +20,7 @@ namespace Hearthstone
             Player.m_localPlayer.TeleportTo(teleportPosition, Player.m_localPlayer.transform.rotation, true);
         }
 
-        [HarmonyPatch(typeof(Player), "ConsumeItem")]
+        [HarmonyPatch(typeof(Player), nameof(Player.ConsumeItem))]
         public static class HearthConsumePatch
         {
             private static readonly List<string> itemsPreventingTeleport = new();

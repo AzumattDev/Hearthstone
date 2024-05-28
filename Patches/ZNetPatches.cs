@@ -39,7 +39,7 @@ namespace Hearthstone
                 Hearthstone.HearthLogger.LogMessage($"ADMIN DETECTED: {Player.m_localPlayer.GetPlayerName()}");
         }
 
-        private static void RPC_CharID(ZNet __instance, ZRpc rpc)
+        public static void RPC_CharID(ZNet __instance, ZRpc rpc)
         {
             if (!__instance.IsDedicated() && !__instance.IsServer()) return;
             ZNetPeer peer = __instance.GetPeer(rpc);
