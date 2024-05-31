@@ -15,7 +15,7 @@ namespace Hearthstone;
 public class Hearthstone : BaseUnityPlugin
 {
     internal const string ModName = "Hearthstone";
-    public const string ModVersion = "1.0.0";
+    public const string ModVersion = "1.0.1";
     internal const string Author = "Azumatt";
     private const string ModGUID = $"{Author}.{ModName}";
     private static string ConfigFileName = ModGUID + ".cfg";
@@ -39,6 +39,7 @@ public class Hearthstone : BaseUnityPlugin
 
         AllowTeleportWithoutRestriction = config("1 - General", "AllowTeleportWithoutRestriction", Toggle.Off, "Allow teleport without restriction");
         AdminsallowTeleportWithoutRestriction = config("1 - General", "AdminTeleportWithoutRestriction", Toggle.On, "Admins teleport without restriction");
+        Cooldown = config("1 - General", "Cooldown", 7200.0, "Cooldown in seconds, default is 7200 (2 hours)");
 
         Item hearthStone = new("hearthstone", "Hearthstone");
         hearthStone.Crafting.Add(CraftingTable.Workbench, 2);
@@ -91,6 +92,7 @@ public class Hearthstone : BaseUnityPlugin
     private static ConfigEntry<Toggle> _serverConfigLocked = null!;
     public static ConfigEntry<Toggle> AllowTeleportWithoutRestriction = null!;
     public static ConfigEntry<Toggle> AdminsallowTeleportWithoutRestriction = null!;
+    public static ConfigEntry<double> Cooldown = null!;
 
     private static readonly ConfigSync configSync = new(ModGUID) { DisplayName = ModName, CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
 

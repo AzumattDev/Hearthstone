@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AzuMiscPatches;
 using HarmonyLib;
@@ -29,28 +31,61 @@ public class PlayerPatches
         private static bool Prefix(ItemDrop.ItemData item)
         {
             if (!item.m_shared.m_name.Contains("item_hearthstone")) return true;
-            if (!Player.m_localPlayer.IsTeleportable() && Hearthstone.AllowTeleportWithoutRestriction.Value == Hearthstone.Toggle.Off)
+            Player? player = Player.m_localPlayer;
+            if (!player.IsTeleportable() && Hearthstone.AllowTeleportWithoutRestriction.Value == Hearthstone.Toggle.Off)
             {
-                var itemDatas = Player.m_localPlayer.GetInventory().GetAllItems();
+                List<ItemDrop.ItemData>? itemDatas = player.GetInventory().GetAllItems();
                 foreach (ItemDrop.ItemData? invItem in itemDatas.Where(invItem => invItem.m_shared.m_teleportable == false))
                     ItemsPreventingTeleport.Add(Localization.instance.Localize(invItem.m_shared.m_name));
                 if (Admin.Enabled)
                 {
                     if (Hearthstone.AdminsallowTeleportWithoutRestriction.Value == Hearthstone.Toggle.On)
                     {
-                        Player.m_localPlayer.Message(MessageHud.MessageType.Center, Localization.instance.Localize("$msg_admin_bypass_teleport"));
+                        player.Message(MessageHud.MessageType.Center, Localization.instance.Localize("$msg_admin_bypass_teleport"));
                         TeleportMe();
                         return true;
                     }
-                    Player.m_localPlayer.Message(MessageHud.MessageType.Center, $"$msg_noteleport\n{ItemsPreventingTeleport[0]}");
+
+                    player.Message(MessageHud.MessageType.Center, $"$msg_noteleport\n{ItemsPreventingTeleport[0]}");
                     return false;
                 }
 
-                Player.m_localPlayer.Message(MessageHud.MessageType.Center, $"$msg_noteleport\n{ItemsPreventingTeleport[0]}");
+                player.Message(MessageHud.MessageType.Center, $"$msg_noteleport\n{ItemsPreventingTeleport[0]}");
                 return false;
             }
 
+            if (!player.m_customData.TryGetValue("HearthstoneCooldown", out string? cooldownTime))
+            {
+                // If they don't have a value, set it to now
+                player.m_customData["HearthstoneCooldown"] = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                cooldownTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            }
+
+            if (!DateTime.TryParse(cooldownTime, out DateTime cdTime))
+            {
+                Hearthstone.HearthLogger.LogError("Failed to parse cooldown time.");
+                return false;
+            }
+
+            if ((DateTime.Now < cdTime) && Hearthstone.AllowTeleportWithoutRestriction.Value == Hearthstone.Toggle.Off)
+            {
+                // Get how much time is left in the cooldown
+                TimeSpan timeLeft = cdTime - DateTime.Now;
+                string timeLeftMessage = $"{Localization.instance.Localize("$msg_teleport_cooldown")}\n";
+                if (timeLeft.Hours > 0)
+                {
+                    timeLeftMessage += $"{timeLeft.Hours}h ";
+                }
+
+                timeLeftMessage += $"{timeLeft.Minutes}m {timeLeft.Seconds}s";
+                player.Message(MessageHud.MessageType.Center, timeLeftMessage);
+
+                return false;
+            }
+
+            player.m_customData["HearthstoneCooldown"] = DateTime.Now.AddSeconds(Hearthstone.Cooldown.Value).ToString(CultureInfo.InvariantCulture);
             TeleportMe();
+
             return true;
         }
     }

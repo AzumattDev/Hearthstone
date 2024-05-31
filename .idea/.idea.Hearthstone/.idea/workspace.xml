@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Managers/Admin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Managers/ItemManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Thunderstore/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Thunderstore/Hearthstone_v1.0.0.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Thunderstore/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Thunderstore/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/environment.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/translations/French.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/translations/German.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/translations/Russian.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/translations/Spanish.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hearthstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hearthstone.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ILRepack.targets" beforeDir="false" afterPath="$PROJECT_DIR$/ILRepack.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LocalizationDecs.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Patches/PlayerPatches.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Patches/PlayerPatches.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patches/ZNetPatches.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hearthstone" beforeDir="false" afterPath="$PROJECT_DIR$/assets/hearthstone" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/English.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +34,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/91/773961a3/Chat.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/c0/8f124a88/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/f9/389a2d73/TeleportWorld.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b7513305042d41128726d7378f1f9ba4531030/62/5a9c1d54/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -109,7 +92,8 @@
       <workItem from="1628489399366" duration="1592000" />
       <workItem from="1716880671829" duration="559000" />
       <workItem from="1717157923598" duration="8073000" />
-      <workItem from="1717166262320" duration="1620000" />
+      <workItem from="1717166262320" duration="1742000" />
+      <workItem from="1717170731664" duration="2053000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, Detalhes permission no Jötunn">
       <created>1628414452919</created>
@@ -141,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717158734330</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v1.0.0, TS Release">
+      <option name="closed" value="true" />
+      <created>1717168018359</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717168018360</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +162,7 @@
     <MESSAGE value="workspace update" />
     <MESSAGE value="Not tested, but update references and such." />
     <MESSAGE value="Update Project to latest of my standards." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Project to latest of my standards." />
+    <MESSAGE value="v1.0.0, TS Release" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.0, TS Release" />
   </component>
 </project>
