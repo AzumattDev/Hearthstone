@@ -1,287 +1,123 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using ItemManager;
+using JetBrains.Annotations;
 using LocalizationManager;
 using ServerSync;
-using UnityEngine;
 
-namespace Hearthstone
+namespace Hearthstone;
+
+[BepInPlugin(ModGUID, ModName, ModVersion)]
+public class Hearthstone : BaseUnityPlugin
 {
-    [BepInPlugin("Detalhes.Hearthstone", "Hearthstone", ModVersion)]
-    public class Hearthstone : BaseUnityPlugin
+    internal const string ModName = "Hearthstone";
+    public const string ModVersion = "1.0.0";
+    internal const string Author = "Azumatt";
+    private const string ModGUID = $"{Author}.{ModName}";
+    private static string ConfigFileName = ModGUID + ".cfg";
+    private static string ConfigFileFullPath = Paths.ConfigPath + Path.DirectorySeparatorChar + ConfigFileName;
+    public static readonly ManualLogSource HearthLogger = BepInEx.Logging.Logger.CreateLogSource(ModGUID);
+    private readonly Harmony _harmony = new(ModGUID);
+
+    public enum Toggle
     {
-        private const string PluginGUID = "Detalhes.Hearthstone";
-        private const string Author = "Detalhes";
-        public const string ModVersion = "1.0.0";
-        public static bool IsAdmin = false;
-        private static GameObject? _hearth;
-        private static Recipe? _recipe;
-        public static readonly ManualLogSource HearthLogger = BepInEx.Logging.Logger.CreateLogSource(PluginGUID);
-        public bool UpdateRecipe;
-
-        private readonly Harmony harmony = new(PluginGUID);
-
-
-        private void Awake()
-        {
-            Localizer.Load();
-            /* Localization file creation. File name will be Detalhes.Hearthstone.Localization.cfg */
-            LocalizationFile =
-                new ConfigFile(
-                    Path.Combine(Path.GetDirectoryName(Config.ConfigFilePath)!, PluginGUID + ".Localization.cfg"),
-                    false);
-            /* Config Options */
-            _serverConfigLocked = config("General", "Force Server Config", true, "Force Server Config");
-            configSync.AddLockingConfigEntry(_serverConfigLocked);
-            _nexusId = config("General", "NexusID", 1417,
-                new ConfigDescription("Nexus mod ID for updates", null, new ConfigurationManagerAttributes()), false);
-
-            AllowTeleportWithoutRestriction = Config.Bind("General", "allowTeleportWithoutRestriction", false,
-                "Allow teleport without restriction");
-            AdminsallowTeleportWithoutRestriction = Config.Bind("General", "AdminTeleportWithoutRestriction", true,
-                "Admins teleport without restriction");
-
-            /* Item 1 */
-            _req1Prefab = itemConfig("Item 1", "Required Prefab", "Coins", "Required item for crafting");
-            _req1Amount = itemConfig("Item 1", "Amount Required", 30, "Amount needed of this item for crafting");
-            _req1Apl = itemConfig("Item 1", "Amount Per Level", 10,
-                "Amount to increase crafting cost by for each level of the item");
-
-            /* Item 2 */
-            _req2Prefab = itemConfig("Item 2", "Required Prefab", "Resin", "Required item for crafting");
-            _req2Amount = itemConfig("Item 2", "Amount Required", 10, "Amount needed of this item for crafting");
-            _req2Apl = itemConfig("Item 2", "Amount Per Level", 10,
-                "Amount to increase crafting cost by for each level of the item");
-
-            /* Item 3 */
-            _req3Prefab = itemConfig("Item 3", "Required Prefab", "BoneFragments", "Required item for crafting");
-            _req3Amount = itemConfig("Item 3", "Amount Required", 10, "Amount needed of this item for crafting");
-            _req3Apl = itemConfig("Item 3", "Amount Per Level", 1,
-                "Amount to increase crafting cost by for each level of the item");
-
-
-            ConfigEntry<T> itemConfig<T>(string item, string name, T value, string description)
-            {
-                ConfigEntry<T> configEntry = config("Recipe " + item, name, value, description);
-                configEntry.SettingChanged += (s, e) => UpdateRecipe = true;
-                return configEntry;
-            }
-
-            harmony.PatchAll();
-            MethodInfo methodInfo = AccessTools.Method(typeof(ZNet), nameof(ZNet.RPC_CharacterID),
-                new[] { typeof(ZRpc), typeof(ZDOID) });
-            harmony.Patch(methodInfo, null,
-                new HarmonyMethod(AccessTools.Method(typeof(HearthstoneAdminGET), nameof(HearthstoneAdminGET.RPC_CharID),
-                    new[] { typeof(ZNet), typeof(ZRpc) })));
-            LocalizationDecs.Localize();
-
-            LoadAssets();
-        }
-
-        private void Update()
-        {
-            if (!Player.m_localPlayer) return;
-            if (UpdateRecipe) HearthRecipe();
-            if (!ObjectDB.instance.m_recipes.Contains(_recipe)) ObjectDB.instance.m_recipes.Add(_recipe);
-        }
-
-        private void OnDestroy()
-        {
-            LocalizationFile.Save();
-            harmony?.UnpatchSelf();
-        }
-
-        private static void TryRegisterFabs(ZNetScene zNetScene)
-        {
-            if (zNetScene == null || zNetScene.m_prefabs == null || zNetScene.m_prefabs.Count <= 0) return;
-            zNetScene.m_prefabs.Add(_hearth);
-        }
-
-        private static AssetBundle GetAssetBundleFromResources(string filename)
-        {
-            var execAssembly = Assembly.GetExecutingAssembly();
-            var resourceName = execAssembly.GetManifestResourceNames()
-                .Single(str => str.EndsWith(filename));
-
-            using var stream = execAssembly.GetManifestResourceStream(resourceName);
-            return AssetBundle.LoadFromStream(stream);
-        }
-
-        private static void LoadAssets()
-        {
-            AssetBundle assetBundle = GetAssetBundleFromResources("hearthstone");
-            _hearth = assetBundle.LoadAsset<GameObject>("Hearthstone");
-            assetBundle.Unload(false);
-        }
-
-        private static void RegisterHearth()
-        {
-            if (ObjectDB.instance.m_items.Count == 0 || ObjectDB.instance.GetItemPrefab("Amber") == null) return;
-            var itemDrop = _hearth.GetComponent<ItemDrop>();
-            if (itemDrop == null) return;
-            if (ObjectDB.instance.GetItemPrefab(_hearth.name.GetStableHashCode()) == null)
-                ObjectDB.instance.m_items.Add(_hearth);
-        }
-
-        private static void HearthAddRecipe()
-        {
-            try
-            {
-                if (!ObjectDB.instance.m_recipes.Any())
-                {
-                    HearthLogger.Log(LogLevel.Debug, "Recipe database not ready for stuff, skipping initialization.");
-                    return;
-                }
-
-                HearthRecipe();
-
-                ObjectDB.instance.UpdateItemHashes();
-            }
-            catch (Exception exc)
-            {
-                Debug.Log(exc);
-            }
-        }
-
-        private static void HearthRecipe()
-        {
-            var db = ObjectDB.instance.m_items;
-            try
-            {
-                db.Remove(_hearth);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error removing Hearthstone from ODB  :{ex}");
-            }
-
-            if (_recipe == null) _recipe = ScriptableObject.CreateInstance<Recipe>();
-            if (!ObjectDB.instance.m_recipes.Contains(_recipe)) ObjectDB.instance.m_recipes.Add(_recipe);
-            GameObject thing1 = ObjectDB.instance.GetItemPrefab(_req1Prefab.Value);
-            GameObject thing2 = ObjectDB.instance.GetItemPrefab(_req2Prefab.Value);
-            GameObject thing3 = ObjectDB.instance.GetItemPrefab(_req3Prefab.Value);
-            _recipe.name = "Recipe_Hearthstone";
-            _recipe.m_craftingStation = ZNetScene.instance.GetPrefab("piece_workbench").GetComponent<CraftingStation>();
-            _recipe.m_repairStation = ZNetScene.instance.GetPrefab("piece_workbench").GetComponent<CraftingStation>();
-            _recipe.m_amount = 1;
-            _recipe.m_minStationLevel = 1;
-            _recipe.m_item = _hearth.GetComponent<ItemDrop>();
-            _recipe.m_enabled = true;
-            _recipe.m_resources = new[]
-            {
-                new()
-                {
-                    m_resItem = thing1.GetComponent<ItemDrop>(), m_amount = _req1Amount.Value,
-                    m_amountPerLevel = _req1Apl.Value, m_recover = true
-                },
-                new Piece.Requirement
-                {
-                    m_resItem = thing2.GetComponent<ItemDrop>(), m_amount = _req2Amount.Value,
-                    m_amountPerLevel = _req2Apl.Value, m_recover = true
-                },
-                new Piece.Requirement
-                {
-                    m_resItem = thing3.GetComponent<ItemDrop>(), m_amount = _req3Amount.Value,
-                    m_amountPerLevel = _req3Apl.Value, m_recover = true
-                }
-            };
-            try
-            {
-                db.Add(_hearth);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error adding Hearthstone to ODB  :{ex}");
-            }
-        }
-
-
-        [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
-        public static class HearthZNetScene_Awake_Patch
-        {
-            public static bool Prefix(ZNetScene __instance)
-            {
-                TryRegisterFabs(__instance);
-                return true;
-            }
-        }
-
-        [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.Awake))]
-        public static class HearthObjectDB_Awake_Patch
-        {
-            public static void Postfix()
-            {
-                RegisterHearth();
-                HearthAddRecipe();
-            }
-        }
-
-        [HarmonyPatch(typeof(ObjectDB), nameof(ObjectDB.CopyOtherDB))]
-        public static class HearthObjectDB_CopyOtherDB_Patch
-        {
-            public static void Postfix()
-            {
-                RegisterHearth();
-                HearthAddRecipe();
-            }
-        }
-
-
-        #region ConfigOptions
-
-        private static ConfigEntry<bool>? _serverConfigLocked;
-        private static ConfigEntry<int>? _nexusId;
-        public static ConfigEntry<bool>? AllowTeleportWithoutRestriction;
-        public static ConfigEntry<bool>? AdminsallowTeleportWithoutRestriction;
-
-        /* Localization file declarations */
-        public static ConfigFile? LocalizationFile;
-        public static readonly Dictionary<string, ConfigEntry<string>> LocalizedStrings = new();
-
-        /* Give users ability to change required items, amounts, and per level reqs */
-        private static ConfigEntry<string>? _req1Prefab;
-        private static ConfigEntry<string>? _req2Prefab;
-        private static ConfigEntry<string>? _req3Prefab;
-
-        private static ConfigEntry<int>? _req1Amount;
-        private static ConfigEntry<int>? _req2Amount;
-        private static ConfigEntry<int>? _req3Amount;
-
-        private static ConfigEntry<int>? _req1Apl;
-        private static ConfigEntry<int>? _req2Apl;
-        private static ConfigEntry<int>? _req3Apl;
-
-        private static readonly ConfigSync configSync = new(PluginGUID)
-            { DisplayName = "Hearthstone", CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
-
-        private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description,
-            bool synchronizedSetting = true)
-        {
-            ConfigEntry<T> configEntry = Config.Bind(group, name, value, description);
-
-            SyncedConfigEntry<T> syncedConfigEntry = configSync.AddConfigEntry(configEntry);
-            syncedConfigEntry.SynchronizedConfig = synchronizedSetting;
-
-            return configEntry;
-        }
-
-        private ConfigEntry<T> config<T>(string group, string name, T value, string description,
-            bool synchronizedSetting = true)
-        {
-            return config(group, name, value, new ConfigDescription(description), synchronizedSetting);
-        }
-
-        private class ConfigurationManagerAttributes
-        {
-            public bool? Browsable = false;
-        }
-
-        #endregion
+        On = 1,
+        Off = 0,
     }
+
+    private void Awake()
+    {
+        Localizer.Load();
+        bool save = Config.SaveOnConfigSet;
+        Config.SaveOnConfigSet = false;
+        _serverConfigLocked = config("1 - General", "Lock Configuration", Toggle.On, new ConfigDescription("If on, the configuration is locked and can be changed by server admins only.", null, new ConfigurationManagerAttributes() { Order = 3 }));
+        _ = configSync.AddLockingConfigEntry(_serverConfigLocked);
+
+        AllowTeleportWithoutRestriction = config("1 - General", "AllowTeleportWithoutRestriction", Toggle.Off, "Allow teleport without restriction");
+        AdminsallowTeleportWithoutRestriction = config("1 - General", "AdminTeleportWithoutRestriction", Toggle.On, "Admins teleport without restriction");
+
+        Item hearthStone = new("hearthstone", "Hearthstone");
+        hearthStone.Crafting.Add(CraftingTable.Workbench, 2);
+        hearthStone.RequiredItems.Add("Coins", 30);
+        hearthStone.RequiredItems.Add("Resin", 10);
+        hearthStone.RequiredItems.Add("BoneFragments", 10);
+        hearthStone.RequiredUpgradeItems.Add("Coins", 5);
+        hearthStone.RequiredUpgradeItems.Add("Resin", 5);
+        hearthStone.RequiredUpgradeItems.Add("BoneFragments", 5);
+        hearthStone.Prefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_maxStackSize = 10;
+
+        _harmony.PatchAll();
+        Config.Save();
+        Config.SaveOnConfigSet = save;
+        SetupWatcher();
+    }
+
+    private void OnDestroy()
+    {
+        Config.Save();
+    }
+
+    private void SetupWatcher()
+    {
+        FileSystemWatcher watcher = new(Paths.ConfigPath, ConfigFileName);
+        watcher.Changed += ReadConfigValues;
+        watcher.Created += ReadConfigValues;
+        watcher.Renamed += ReadConfigValues;
+        watcher.IncludeSubdirectories = true;
+        watcher.SynchronizingObject = ThreadingHelper.SynchronizingObject;
+        watcher.EnableRaisingEvents = true;
+    }
+
+    private void ReadConfigValues(object sender, FileSystemEventArgs e)
+    {
+        if (!File.Exists(ConfigFileFullPath)) return;
+        try
+        {
+            Config.Reload();
+        }
+        catch
+        {
+            HearthLogger.LogError($"There was an issue loading your {ConfigFileName}");
+            HearthLogger.LogError("Please check your config entries for spelling and format!");
+        }
+    }
+
+    #region ConfigOptions
+
+    private static ConfigEntry<Toggle> _serverConfigLocked = null!;
+    public static ConfigEntry<Toggle> AllowTeleportWithoutRestriction = null!;
+    public static ConfigEntry<Toggle> AdminsallowTeleportWithoutRestriction = null!;
+
+    private static readonly ConfigSync configSync = new(ModGUID) { DisplayName = ModName, CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
+
+    private ConfigEntry<T> config<T>(string group, string name, T value, ConfigDescription description, bool synchronizedSetting = true)
+    {
+        ConfigDescription extendedDescription = new(description.Description + (synchronizedSetting ? " [Synced with Server]" : " [Not Synced with Server]"), description.AcceptableValues, description.Tags);
+        ConfigEntry<T> configEntry = Config.Bind(group, name, value, extendedDescription);
+        //var configEntry = Config.Bind(group, name, value, description);
+
+        SyncedConfigEntry<T> syncedConfigEntry = configSync.AddConfigEntry(configEntry);
+        syncedConfigEntry.SynchronizedConfig = synchronizedSetting;
+
+        return configEntry;
+    }
+
+    private ConfigEntry<T> config<T>(string group, string name, T value, string description, bool synchronizedSetting = true)
+    {
+        return config(group, name, value, new ConfigDescription(description), synchronizedSetting);
+    }
+
+    private class ConfigurationManagerAttributes
+    {
+        [UsedImplicitly] public int? Order = null!;
+        [UsedImplicitly] public bool? Browsable = null!;
+        [UsedImplicitly] public string? Category = null!;
+        [UsedImplicitly] public Action<ConfigEntryBase>? CustomDrawer = null!;
+    }
+
+    #endregion
 }

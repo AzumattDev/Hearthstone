@@ -1,0 +1,4 @@
+item_hearthstone: "Ruhestein"
+item_hearthstone_description: "Teleportiert dich nach Hause oder zum Starttempel, wenn du kein Bett besitzt."
+msg_teleport_home: "Kein Bett gefunden, teleportiere zum Starttempel."
+msg_admin_bypass_teleport: "Admin: Teleportiere trotz Einschränkungen."

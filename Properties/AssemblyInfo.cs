@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Hearthstone")]
+[assembly: AssemblyTitle(Hearthstone.Hearthstone.ModName)]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Detalhes & Azumatt")]
-[assembly: AssemblyProduct("Hearthstone")]
+[assembly: AssemblyCompany(Hearthstone.Hearthstone.Author)]
+[assembly: AssemblyProduct(Hearthstone.Hearthstone.ModName)]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

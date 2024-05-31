@@ -1,2 +1,4 @@
-# Ready to use english translation file for the plugin
-# (for more information on LocalizationManager, see the LocalizationManager documentation https://github.com/blaxxun-boop/LocalizationManager#example-project).
+item_hearthstone: "Hearthstone"
+item_hearthstone_description: "Teleports you home or to the starting temple if you don't have a bed."
+msg_teleport_home: "No bed found, teleport to the starting temple."
+msg_admin_bypass_teleport: "Admin; Teleporting despite restrictions"
