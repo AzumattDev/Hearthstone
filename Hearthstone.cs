@@ -7,6 +7,7 @@ using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using LocalizationManager;
 using ServerSync;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Hearthstone
 
         private void Awake()
         {
+            Localizer.Load();
             /* Localization file creation. File name will be Detalhes.Hearthstone.Localization.cfg */
             LocalizationFile =
                 new ConfigFile(

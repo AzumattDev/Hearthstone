@@ -14,8 +14,7 @@ namespace Hearthstone
                 : playerProfile.GetHomePoint();
 
             if (!playerProfile.HaveCustomSpawnPoint())
-                Player.m_localPlayer.Message(MessageHud.MessageType.Center,
-                    "No custom spawn point found; Teleporting to spawn");
+                Player.m_localPlayer.Message(MessageHud.MessageType.Center, "No custom spawn point found; Teleporting to spawn");
 
             Player.m_localPlayer.TeleportTo(teleportPosition, Player.m_localPlayer.transform.rotation, true);
         }
