@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hearthstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patches/PlayerPatches.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Patches/PlayerPatches.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/English.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment.props" beforeDir="false" afterPath="$PROJECT_DIR$/environment.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <workItem from="1716880671829" duration="559000" />
       <workItem from="1717157923598" duration="8073000" />
       <workItem from="1717166262320" duration="1742000" />
-      <workItem from="1717170731664" duration="2053000" />
+      <workItem from="1717170731664" duration="3283000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, Detalhes permission no Jötunn">
       <created>1628414452919</created>
@@ -133,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717168018360</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="v1.0.1, add cooldown">
+      <option name="closed" value="true" />
+      <created>1717174448783</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717174448783</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +168,7 @@
     <MESSAGE value="Not tested, but update references and such." />
     <MESSAGE value="Update Project to latest of my standards." />
     <MESSAGE value="v1.0.0, TS Release" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.0.0, TS Release" />
+    <MESSAGE value="v1.0.1, add cooldown" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.1, add cooldown" />
   </component>
 </project>
