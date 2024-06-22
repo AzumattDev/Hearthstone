@@ -61,9 +61,9 @@ public class PlayerPatches
                 cooldownTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             }
 
-            if (!DateTime.TryParse(cooldownTime, out DateTime cdTime))
+            if (!DateTime.TryParse(cooldownTime, CultureInfo.InvariantCulture, out DateTime cdTime))
             {
-                Hearthstone.HearthLogger.LogError("Failed to parse cooldown time.");
+                Hearthstone.HearthLogger.LogError($"Failed to parse cooldown time '{cooldownTime}'");
                 return false;
             }
 
