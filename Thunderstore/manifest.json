@@ -1,6 +1,6 @@
 {
   "name": "Hearthstone",
-  "version_number": "1.0.2",
+  "version_number": "1.0.3",
   "website_url": "https://discord.gg/pdHgy6Bsng",
   "description": "Adds an item to the game that allows you to return to your bed or the default start temple if no bed is found. Configurable recipe.",
   "dependencies": [

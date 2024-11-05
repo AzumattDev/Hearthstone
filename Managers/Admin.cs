@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace AzuMiscPatches;
+namespace Hearthstone.Managers;
 
 ///<summary>Static accessors for easier usage.</summary>
 public static class Admin
@@ -77,7 +77,7 @@ public class DefaultAdmin : IAdmin
 
     protected virtual void OnSuccess()
     {
-        Hearthstone.Hearthstone.HearthLogger.LogInfo("Admin");
+        global::Hearthstone.Hearthstone.HearthLogger.LogInfo("Admin");
         Checking = false;
         Enabled = true;
     }

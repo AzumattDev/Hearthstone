@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using AzuMiscPatches;
 using HarmonyLib;
+using Hearthstone.Managers;
 using UnityEngine;
 
 namespace Hearthstone.Patches;
