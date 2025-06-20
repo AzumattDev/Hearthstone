@@ -17,7 +17,7 @@ namespace Hearthstone;
 public class Hearthstone : BaseUnityPlugin
 {
     internal const string ModName = "Hearthstone";
-    public const string ModVersion = "1.1.0";
+    public const string ModVersion = "1.1.1";
     internal const string Author = "Azumatt";
     private const string ModGUID = $"{Author}.{ModName}";
     private static string ConfigFileName = ModGUID + ".cfg";

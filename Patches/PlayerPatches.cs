@@ -34,6 +34,29 @@ public class PlayerPatches
         player.GetSEMan().AddStatusEffect(Hearthstone.cooldownEffect);
     }
 
+    [HarmonyPatch(typeof(Player), nameof(Player.OnSpawned))]
+    public static class Player_OnSpawned_Patch
+    {
+        private static void Postfix(Player __instance)
+        {
+            // Only apply to local player
+            if (__instance != Player.m_localPlayer) return;
+
+            // Check if player has an active cooldown
+            if (__instance.m_customData.TryGetValue("HearthstoneCooldown", out string? cooldownTime))
+            {
+                if (DateTime.TryParse(cooldownTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime cdTime))
+                {
+                    // Only reapply if cooldown is still active
+                    if (DateTime.Now < cdTime)
+                    {
+                        ApplyCooldownStatusEffect(__instance, cdTime);
+                    }
+                }
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(Player), nameof(Player.ConsumeItem))]
     public static class HearthConsumePatch
     {
