@@ -4,10 +4,12 @@ using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
+using Hearthstone.Patches;
 using ItemManager;
 using JetBrains.Annotations;
 using LocalizationManager;
 using ServerSync;
+using UnityEngine;
 
 namespace Hearthstone;
 
@@ -15,13 +17,14 @@ namespace Hearthstone;
 public class Hearthstone : BaseUnityPlugin
 {
     internal const string ModName = "Hearthstone";
-    public const string ModVersion = "1.0.3";
+    public const string ModVersion = "1.1.0";
     internal const string Author = "Azumatt";
     private const string ModGUID = $"{Author}.{ModName}";
     private static string ConfigFileName = ModGUID + ".cfg";
     private static string ConfigFileFullPath = Paths.ConfigPath + Path.DirectorySeparatorChar + ConfigFileName;
     public static readonly ManualLogSource HearthLogger = BepInEx.Logging.Logger.CreateLogSource(ModGUID);
     private readonly Harmony _harmony = new(ModGUID);
+    public static HearthstoneCooldownStatusEffect cooldownEffect = null!;
 
     public enum Toggle
     {
@@ -55,6 +58,11 @@ public class Hearthstone : BaseUnityPlugin
         Config.Save();
         Config.SaveOnConfigSet = save;
         SetupWatcher();
+        
+        cooldownEffect = ScriptableObject.CreateInstance<HearthstoneCooldownStatusEffect>();
+        cooldownEffect.name = "HearthstoneCooldown";
+        cooldownEffect.m_name = "Hearthstone Cooldown";
+        cooldownEffect.m_icon = hearthStone.Prefab.GetComponent<ItemDrop>().m_itemData.GetIcon();
     }
 
     private void OnDestroy()

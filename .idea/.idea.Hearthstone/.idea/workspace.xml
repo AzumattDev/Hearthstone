@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c096a6c-0f93-49f1-9c21-779261cee6c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Patches/ActionQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patches/TeleportationHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hearthstone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hearthstone.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hearthstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hearthstone.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Hearthstone.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/Admin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/Admin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/ItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/ItemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/ServerSync.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/ServerSync.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patches/PlayerPatches.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Patches/PlayerPatches.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thunderstore/Hearthstone_v1.0.2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Thunderstore/Hearthstone_v1.0.2.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Thunderstore/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Thunderstore/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/environment.props" beforeDir="false" afterPath="$PROJECT_DIR$/environment.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,17 +35,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/14f11ce09e8d4af080b66791187a26cb1eb800/6d/17153a9c/ZoneSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/91/773961a3/Chat.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/c0/8f124a88/Player.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/67f3c386e04446c49523ecfd5b8921c21cb200/f9/389a2d73/TeleportWorld.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/0b/38b8690c/Minimap.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/2c/da9c463b/Player.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/45/1921d17a/Character.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/4f/8a1df9dd/Hud.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/b6/1935a17b/ZNetScene.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79989041713a40fba2973f16244732481cda00/e2/cf7fca0b/ZoneSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b7513305042d41128726d7378f1f9ba4531030/62/5a9c1d54/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4162928ed6e42468a4d973647f3b73f1f0400/01/9c3dd49f/Character.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4162928ed6e42468a4d973647f3b73f1f0400/05/5a0e2d0a/SEMan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4162928ed6e42468a4d973647f3b73f1f0400/23/0b71f00b/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4162928ed6e42468a4d973647f3b73f1f0400/7b/881f710a/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4162928ed6e42468a4d973647f3b73f1f0400/8b/0f72ef62/Humanoid.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -59,28 +50,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ChatTagsLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ClientConfigCleanupMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.DeprecatedChatLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -107,6 +115,12 @@
       <workItem from="1722012821981" duration="6336000" />
       <workItem from="1722023865208" duration="1295000" />
       <workItem from="1729403741947" duration="252000" />
+      <workItem from="1730771579710" duration="426000" />
+      <workItem from="1748326557714" duration="624000" />
+      <workItem from="1748328944495" duration="104000" />
+      <workItem from="1748397917315" duration="1731000" />
+      <workItem from="1748415087649" duration="979000" />
+      <workItem from="1750389447874" duration="722000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, Detalhes permission no Jötunn">
       <created>1628414452919</created>
@@ -162,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719028715515</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="v1.0.3">
+      <option name="closed" value="true" />
+      <created>1730771987758</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730771987758</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +208,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit, Detalhes permission no Jötunn" />
     <MESSAGE value="workspace update" />
@@ -195,6 +216,27 @@
     <MESSAGE value="v1.0.0, TS Release" />
     <MESSAGE value="v1.0.1, add cooldown" />
     <MESSAGE value="v1.0.2, InvariantCulture fix, and fix up PR's code." />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.0.2, InvariantCulture fix, and fix up PR's code." />
+    <MESSAGE value="Teleport faster thing, i don't remember." />
+    <MESSAGE value="Shelved TeleportationHandlers stuff" />
+    <MESSAGE value="v1.0.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
